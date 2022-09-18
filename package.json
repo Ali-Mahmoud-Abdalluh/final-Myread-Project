@@ -1,7 +1,6 @@
 {
   "name": "nd0191-myreads-starter",
   "version": "0.1.0",
-  "homepage": "https://ali-mahmoud-abdalluh.github.io/nd0191-c1-myreads/",
   "private": false,
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",

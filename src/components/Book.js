@@ -1,5 +1,7 @@
 import React from "react";
 import * as BooksAPI from "../BooksAPI.js";
+import PropTypes from 'prop-types';
+
 const Book = ({ book, updateScreen, myBooks }) => {
   
   function changeShelfHandle(event) {
@@ -8,6 +10,7 @@ const Book = ({ book, updateScreen, myBooks }) => {
       .catch((error) => console.log(error));
   }
 
+  const shelves = [{"currentlyReading":"Currently Reading"},{"wantToRead":"Want to Read"},{"read":"Read"},{"none": "None"}]
   return (
     <li>
       <div className="book">
@@ -27,10 +30,10 @@ const Book = ({ book, updateScreen, myBooks }) => {
               onChange={changeShelfHandle}
             >
               <option disabled>Move to...</option>
-              <option value="currentlyReading">Currently Reading</option>
-              <option value="wantToRead">Want to Read</option>
-              <option value="read">Read</option>
-              <option value="none">None</option>
+              {
+                shelves.map((shelf, index)=> <option key={index} value={Object.keys(shelf)[0]}>{Object.values(shelf)[0]}</option>)
+              }
+              
             </select>
           </div>
         </div>
@@ -40,5 +43,11 @@ const Book = ({ book, updateScreen, myBooks }) => {
     </li>
   );
 };
+
+Book.propTypes = {
+  book: PropTypes.object,
+  updateScreen: PropTypes.func,
+  myBooks: PropTypes.array,
+}
 
 export default Book;

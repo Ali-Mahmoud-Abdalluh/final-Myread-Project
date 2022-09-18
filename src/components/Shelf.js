@@ -1,5 +1,6 @@
 import React from "react";
 import Book from './Book.js';
+import PropTypes from 'prop-types';
 
 const Shelf = ({books, shelfTitle, updateScreen}) => {
   return (
@@ -8,7 +9,7 @@ const Shelf = ({books, shelfTitle, updateScreen}) => {
       <div className="bookshelf-books">
         <ol className="books-grid">
             {books.map((book)=>{
-                return<Book key={book.id} book={book} updateScreen = {updateScreen} />
+                return<Book key={book.id} book={book} updateScreen = {updateScreen} myBooks={[]}/>
             })}
         </ol>
       </div>
@@ -16,4 +17,9 @@ const Shelf = ({books, shelfTitle, updateScreen}) => {
   );
 };
 
+Shelf.propTypes = {
+  books: PropTypes.array,
+  shelfTitle: PropTypes.string,
+  updateScreen: PropTypes.func
+}
 export default Shelf;
